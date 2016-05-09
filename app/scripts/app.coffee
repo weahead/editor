@@ -99,11 +99,11 @@ class App
     canvas
 
   loadContent: ->
-    return unless (content = localStorage["content"])
+    return unless (content = sessionStorage["content"])
     @editor.setValue content, -1
 
   saveContent: =>
-    localStorage["content"] = @editor.getValue()
+    sessionStorage["content"] = @editor.getValue()
 
   onFrame: (time) =>
     @drawParticles time - @lastDraw
