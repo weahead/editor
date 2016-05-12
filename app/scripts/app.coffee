@@ -9,7 +9,7 @@ require "brace/theme/vibrant_ink"
 require "brace/ext/searchbox"
 
 class App
-  POWER_MODE_ACTIVATION_THRESHOLD: 200
+  POWER_MODE_ACTIVATION_THRESHOLD: 10000
   STREAK_TIMEOUT: 10 * 1000
 
   MAX_PARTICLES: 500
@@ -99,11 +99,11 @@ class App
     canvas
 
   loadContent: ->
-    return unless (content = localStorage["content"])
+    return unless (content = sessionStorage["content"])
     @editor.setValue content, -1
 
   saveContent: =>
-    localStorage["content"] = @editor.getValue()
+    sessionStorage["content"] = @editor.getValue()
 
   onFrame: (time) =>
     @drawParticles time - @lastDraw
